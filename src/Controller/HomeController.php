@@ -17,4 +17,11 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+
+    /**
+     * @Route("/contact", name="contact")
+     */
+    public function contact() {
+        return $this->render('home/contact.html.twig');
+    }
 }
