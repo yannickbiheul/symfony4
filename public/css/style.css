@@ -28,3 +28,8 @@
     font-weight: 300;
     font-size: 14px;
 }
+
+.img-medium {
+    max-width: 512px;
+    max-height: 512px;
+}

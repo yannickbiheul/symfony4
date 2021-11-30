@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projets{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <h1 class="text-center my-5">{{ project.title }}</h1>
+    <div class="row">
+        <div class="col-4">
+            <img class="img-medium" src="{{ project.image }}" alt="{{ project.title }}">
+        </div>
+        <div class="col-6 ml-5">
+            <p>{{ project.description }}</p>
+            <div class="projects-links d-flex justify-content-around">
+                <a href="{{ project.github }}" target="_blank" class="btn btn-outline-dark"><i class="fab fa-github"></i> GitHub</a>
+                <a href="{{ project.github }}/archive/main.zip" class="btn btn-outline-info"><i class="fas fa-download"></i> Télécharger</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
