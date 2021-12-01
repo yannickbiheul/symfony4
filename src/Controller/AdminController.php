@@ -56,10 +56,40 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $manager->persist($project);
             $manager->flush();
-            return $this->redirectToRoute('projects');
+            return $this->redirectToRoute('admin_projects');
         }
 
         return $this->render('admin/new.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/admin/projects/{id}/delete", name="admin_projects_delete")
+     */
+    public function delete(Project $project, EntityManagerInterface $manager)
+    {
+        $manager->remove($project);
+        $manager->flush();
+
+        return $this->redirectToRoute('admin_projects');
+    }
+
+    /**
+     * @Route("/admin/projects/{id}/edit", name="admin_projects_edit")
+     */
+    public function edit(Project $project, EntityManagerInterface $manager, Request $request)
+    {
+        $form = $this->createForm(ProjectType::class, $project);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->persist($project);
+            $manager->flush();
+            return $this->redirectToRoute('admin_projects');
+        }
+
+        return $this->render('admin/edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
