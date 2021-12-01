@@ -6,13 +6,31 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{ path('projects') }}">Mes Projets</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ path('contact') }}">Contact</a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ path('projects') }}">Mes Projets</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('admin_projects') }}">Admin projets</a>
+            </li>
         </ul>
+        
+        {% if app.user %}
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link btn btn-danger text-white" href="{{ path('admin_logout') }}">Déconnexion</a>
+            </li>
+        </ul>
+        {% else %}
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link btn btn-success text-white" href="{{ path('admin_login') }}">Connexion</a>
+            </li>
+        </ul>
+        {% endif %}
+        
     </div>
     </div>
 </nav>
